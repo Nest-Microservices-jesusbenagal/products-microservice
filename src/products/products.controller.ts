@@ -16,12 +16,12 @@ export class ProductsController {
     return this.productsService.create(createProductDto);
   }
 
-  @MessagePattern({ cmd: "find_all" })
+  @MessagePattern({ cmd: "find_all_products" })
   findAll(@Payload() paginationDto: PaginationDto) {
     return this.productsService.findAll(paginationDto);
   }
 
-  @MessagePattern({ cmd: "find_one" })
+  @MessagePattern({ cmd: "find_one_product" })
   findOne(@Payload("id", ParseIntPipe) id: number) {
     return this.productsService.findOne(id);
   }
@@ -31,7 +31,7 @@ export class ProductsController {
     return this.productsService.update(updateProductDto.id, updateProductDto);
   }
 
-  @MessagePattern({ cmd: "remove" })
+  @MessagePattern({ cmd: "remove_product" })
   remove(@Payload("id", ParseIntPipe) id: number) {
     return this.productsService.remove(id);
   }
